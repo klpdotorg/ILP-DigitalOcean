@@ -1,0 +1,407 @@
+[
+{
+    "model": "boundary.BoundaryStateCode",
+    "pk": "ka",
+    "fields": {
+        "boundary_id": 2,
+        "language": "kan"
+    }
+},
+{
+    "model": "boundary.BoundaryStateCode",
+    "pk": "od",
+    "fields":{
+        "boundary_id": 3,
+        "language": "kan"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 418,
+    "fields": {
+        "parent": 2,
+        "name": "raichur",
+        "boundary_type": "SD",
+        "type": "primary",
+        "dise_slug": "raichur",
+        "geom": "SRID=4326;POINT (76.9010746444672 16.10449501741802)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 457,
+    "fields": {
+        "parent": 413,
+        "name": "belgaum city",
+        "boundary_type": "SB",
+        "type": "primary",
+        "dise_slug": "belgaum-belgaum-city",
+        "geom": "SRID=4326;POINT (74.50466900000001 15.85036)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundarytype",
+    "pk": "PD",
+    "fields": {
+        "name": "Preschool District"
+    }
+},
+{
+    "model": "boundary.boundarytype",
+    "pk": "SB",
+    "fields": {
+        "name": "School Block"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 413,
+    "fields": {
+        "parent": 2,
+        "name": "belagavi",
+        "boundary_type": "SD",
+        "type": "primary",
+        "dise_slug": "belgaum",
+        "geom": "SRID=4326;POINT (74.81999999999999 16.12)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 489,
+    "fields": {
+        "parent": 418,
+        "name": "manvi",
+        "boundary_type": "SB",
+        "type": "primary",
+        "dise_slug": "raichur-manvi",
+        "geom": "SRID=4326;POINT (76.95106815720526 16.05296067248907)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundarytype",
+    "pk": "SD",
+    "fields": {
+        "name": "School District"
+    }
+},
+{
+    "model": "boundary.boundarytype",
+    "pk": "PP",
+    "fields": {
+        "name": "Preschool Project"
+    }
+},
+{
+    "model": "common.institutiontype",
+    "pk": "primary",
+    "fields": {
+        "name": "Primary School"
+    }
+},
+{
+    "model": "boundary.boundarytype",
+    "pk": "SC",
+    "fields": {
+        "name": "School Cluster"
+    }
+},
+{
+    "model": "common.institutiontype",
+    "pk": "pre",
+    "fields": {
+        "name": "Pre School"
+    }
+},
+{
+    "model": "boundary.boundarytype",
+    "pk": "PC",
+    "fields": {
+        "name": "Preschool Circle"
+    }
+},
+{
+    "model": "boundary.boundarytype",
+    "pk": "ST",
+    "fields": {
+        "name": "State"
+    }
+},
+{
+    "model": "common.status",
+    "pk": "AC",
+    "fields": {
+        "name": "Active"
+    }
+},
+{
+    "model": "boundary.boundarytype",
+    "pk": "C",
+    "fields": {
+        "name": "Country"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 659,
+    "fields": {
+        "parent": 456,
+        "name": "neginhal",
+        "boundary_type": "SC",
+        "type": "primary",
+        "dise_slug": "bailhongal-neginhal",
+        "geom": null,
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 467,
+    "fields": {
+        "parent": 414,
+        "name": "mudhol",
+        "boundary_type": "SB",
+        "type": "primary",
+        "dise_slug": "bagalkot-mudhol",
+        "geom": "SRID=4326;POINT (75.24576442857143 16.32385262857143)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 666,
+    "fields": {
+        "parent": 457,
+        "name": "mahantesh nagar (khps.24)",
+        "boundary_type": "SC",
+        "type": "primary",
+        "dise_slug": "belgaum-city-mahantesh-nagar-khps-24",
+        "geom": null,
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 9740,
+    "fields": {
+        "parent": 467,
+        "name": "lakshanatti",
+        "boundary_type": "SC",
+        "type": "primary",
+        "dise_slug": "Default",
+        "geom": null,
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 9115,
+    "fields": {
+        "parent": 2,
+        "name": "kolar",
+        "boundary_type": "PD",
+        "type": "pre",
+        "dise_slug": "Default",
+        "geom": "SRID=4326;POINT (77.96176301999999 13.03741902)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 9064,
+    "fields": {
+        "parent": 2,
+        "name": "dharwad",
+        "boundary_type": "PD",
+        "type": "pre",
+        "dise_slug": "Default",
+        "geom": "SRID=4326;POINT (75.07178769090906 15.40379475454545)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 9505,
+    "fields": {
+        "parent": 467,
+        "name": "chichkhandi k d",
+        "boundary_type": "SC",
+        "type": "primary",
+        "dise_slug": "mudhol-chichkhandi",
+        "geom": null,
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 8776,
+    "fields": {
+        "parent": 8773,
+        "name": "bangalore north (yelahanka)",
+        "boundary_type": "PP",
+        "type": "pre",
+        "dise_slug": "Default",
+        "geom": "SRID=4326;POINT (77.5411018790614 13.08093294945848)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 8773,
+    "fields": {
+        "parent": 2,
+        "name": "bangalore",
+        "boundary_type": "PD",
+        "type": "pre",
+        "dise_slug": "Default",
+        "geom": "SRID=4326;POINT (77.59773614292784 12.95423918496538)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 456,
+    "fields": {
+        "parent": 413,
+        "name": "bailhongal",
+        "boundary_type": "SB",
+        "type": "primary",
+        "dise_slug": "belgaum-bailhongal",
+        "geom": "SRID=4326;POINT (74.8565613 15.8132997)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 8835,
+    "fields": {
+        "parent": 8776,
+        "name": "baglur",
+        "boundary_type": "PC",
+        "type": "pre",
+        "dise_slug": "Default",
+        "geom": "SRID=4326;POINT (77.68861628571429 13.14374235714286)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 9378,
+    "fields": {
+        "parent": 489,
+        "name": "bagalwada",
+        "boundary_type": "SC",
+        "type": "primary",
+        "dise_slug": "manvi-bagalwada",
+        "geom": "SRID=4326;POINT (76.87984616666667 16.04158116666667)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 414,
+    "fields": {
+        "parent": 2,
+        "name": "bagalkot",
+        "boundary_type": "SD",
+        "type": "primary",
+        "dise_slug": "bagalkot",
+        "geom": "SRID=4326;POINT (75.49158590547789 16.27392985392052)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 9155,
+    "fields": {
+        "parent": 8776,
+        "name": "atturu",
+        "boundary_type": "PC",
+        "type": "pre",
+        "dise_slug": "Default",
+        "geom": "SRID=4326;POINT (77.54742999999999 13.10595)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 8775,
+    "fields": {
+        "parent": 8773,
+        "name": "anekal taluk",
+        "boundary_type": "PP",
+        "type": "pre",
+        "dise_slug": "Default",
+        "geom": "SRID=4326;POINT (77.69740742824604 12.78897100455581)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 658,
+    "fields": {
+        "parent": 456,
+        "name": "ambadgatti",
+        "boundary_type": "SC",
+        "type": "primary",
+        "dise_slug": "bailhongal-ambadgatti",
+        "geom": null,
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 8864,
+    "fields": {
+        "parent": 8776,
+        "name": "abbigere",
+        "boundary_type": "PC",
+        "type": "pre",
+        "dise_slug": "Default",
+        "geom": "SRID=4326;POINT (77.54478275862068 13.08285489655172)",
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 2,
+    "fields": {
+        "parent": 1,
+        "name": "Karnataka",
+        "boundary_type": "ST",
+        "type": null,
+        "dise_slug": "Karnataka",
+        "geom": null,
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 3,
+    "fields": {
+        "parent": 1,
+        "name": "Odisha",
+        "boundary_type": "ST",
+        "type": null,
+        "dise_slug": "Odisha",
+        "geom": null,
+        "status": "AC"
+    }
+},
+{
+    "model": "boundary.boundary",
+    "pk": 1,
+    "fields": {
+        "parent": null,
+        "name": "India",
+        "boundary_type": "C",
+        "type": null,
+        "dise_slug": "India",
+        "geom": null,
+        "status": "AC"
+    }
+}
+]

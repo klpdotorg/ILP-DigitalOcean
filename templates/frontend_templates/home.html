@@ -1,0 +1,20 @@
+{% verbatim %}
+<script type="text/html" id="tpl-sysInfo">
+  <div>
+    {% for s in stories %}
+      
+      <div class="stories-list-each">
+        <a href="school/{{ s.institution }}#?tab=info">
+          {{ s.institution_name }}
+        </a>
+          {% if s.created_by_username %}
+          : {{ s.created_by_username }}
+          {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</script>
+<script type="text/html" id="tpl-sysCounts">
+  {{ total_verified_stories }} Stories and {{ total_images }} Images
+</script>
+{% endverbatim %}

@@ -1,0 +1,2 @@
+id,question_text,display_text,key,options,is_featured,question type,status,max score,pass score,name in colloquial language,options in language
+,Kit delivered to the school ?,Is the kit delivered to the school ?,Math_kit,"{Yes,No}",True,1,AC,,,ಶಾಲೆಗೆ ಗಣಿತ ಕಿಟ್ ಸರಬರಾಜು ಮಾಡಲಾಗಿದೆಯೇ?,"{ಹೌದು,ಇಲ್ಲ}"

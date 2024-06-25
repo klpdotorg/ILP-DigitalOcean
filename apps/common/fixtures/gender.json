@@ -1,0 +1,23 @@
+[
+    {
+        "model": "common.Gender",
+        "fields":{
+            "char_id": "male",
+            "name": "Male"
+        }
+    },
+    {
+        "model": "common.Gender",
+        "fields":{
+            "char_id": "female",
+            "name": "Female"
+        }
+    },
+    {
+        "model": "common.Gender",
+        "fields":{
+            "char_id": "other",
+            "name": "Other"
+        }
+    }
+]

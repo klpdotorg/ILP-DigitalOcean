@@ -1,0 +1,44 @@
+[
+    {
+        "model": "assessments.DisplayType",
+        "fields":{
+            "char_id": "TextArea",
+            "description": "TextArea"
+        }
+    },
+    {
+        "model": "assessments.DisplayType",
+        "fields":{
+            "char_id": "TextBox",
+            "description": "TextBox"
+        }
+    },
+    {
+        "model": "assessments.DisplayType",
+        "fields":{
+            "char_id": "Radio",
+            "description": "Radio"
+        }
+    },
+    {
+        "model": "assessments.DisplayType",
+        "fields":{
+            "char_id": "Select",
+            "description": "Select"
+        }
+    },
+    {
+        "model": "assessments.DisplayType",
+        "fields":{
+            "char_id": "CheckBox",
+            "description": "CheckBox"
+        }
+    },
+    {
+        "model": "assessments.DisplayType",
+        "fields":{
+            "char_id": "NumericBox",
+            "description": "TextBox"
+        }
+    }
+]

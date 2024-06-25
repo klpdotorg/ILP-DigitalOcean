@@ -1,0 +1,70 @@
+#
+#import files
+imports/*/load
+*_getdata.sql
+*_loaddata.sql
+*_tempdata.sql
+# Python bytecode:
+*.py[co]
+
+# Packaging files:
+*.egg*
+
+# Sphinx docs:
+build
+
+# SQLite3 database files:
+*.db
+
+# Logs:
+*.log
+
+# Coverage
+.coverage
+
+# Eclipse
+.project
+.pydevproject
+.settings
+
+# Linux Editors
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Mac
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Secret key
+secret.txt
+
+# Local settings
+local_settings.py
+test_settings.py
+prod_settings.py
+
+
+# Collected static
+collected-static/
+
+# media folder (uploads)
+media/
+
+.idea/
+
+# Locale
+.django.mo
