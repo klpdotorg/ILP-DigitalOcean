@@ -1,32 +1,100 @@
-# This config was automatically generated from your source code
-# Stacks detected: deps:python:.,file:manage.py:.
-version: 2.1
-orbs:
-  python: circleci/python@2
+version: 2
 jobs:
-  test-python:
-    # Install dependencies and run tests
+  build:
+    working_directory: ~/klpdotorg/ilp
+    parallelism: 1
+    environment:
+      CIRCLE_ARTIFACTS: /tmp/circleci-artifacts
+      CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
+    shell: /bin/bash --login
     docker:
-      - image: cimg/python:3.8-node
+      - image: circleci/python:3.10-buster
+        environment:
+          DATABASE_URL: postgresql://ubuntu:@127.0.0.1:5432/test_ilp
+      - image: mdillon/postgis:9.6 # database image for service container available at `localhost:<port>`
+        environment: # environment variables for database
+          POSTGRES_USER: ubuntu
+          POSTGRES_DB: test_ilp
     steps:
       - checkout
-      - python/install-packages
+      - run: mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
       - run:
-          name: Run tests
-          command: python manage.py test
+          working_directory: ~/klpdotorg/ilp
+          command: "echo 'Asia/Kolkata' | sudo tee -a /etc/timezone; sudo dpkg-reconfigure -f noninteractive tzdata;"
+      - run: sudo apt-get update && sudo apt-get install -y libgdal-dev python3-dev postgis postgresql-client python3-virtualenv
+      - run: python -m venv venv; source venv/bin/activate && pip --no-cache install -r requirements/test.txt
+      - run: mv ilp/settings/ci_settings.py.sample ilp/settings/ci_settings.py
+      - run: sudo python -m pip --no-cache install coverage requests
+      - run: git clean -dxf
+      - store_test_results:
+          path: /tmp/circleci-test-results
+      - store_artifacts:
+          path: /tmp/artifacts
+
   deploy:
-    # This is an example deploy job, not actually used by the workflow
     docker:
-      - image: cimg/base:stable
+      - image: circleci/python:3.10-buster
+    working_directory: ~/ilp
     steps:
-      # Replace this with steps to deploy to users
+      - checkout
       - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
+          name: Trigger Jenkins Job
+          command: |
+            JENKINS_URL="http://64.225.87.131:8080/"
+            # JENKINS_JOB="deploy-ilp"
+            JENKINS_USER="jenkins_user"
+            JENKINS_API_TOKEN="114287e118629483a5df7c2447582ccc04"
+
+            if [[ $CIRCLE_BRANCH == 'master' ]]; then
+              JENKINS_JOB="ilp-staging-job"
+            else
+              JENKINS_JOB="ilp-staging-job"
+            fi 
+
+            # # Trigger Jenkins job
+            # response=$(curl -X POST "$JENKINS_URL/job/$JENKINS_JOB/buildWithParameters" \
+            #   --user "$JENKINS_USER:$JENKINS_API_TOKEN" \
+            #   --data-urlencode json='{"parameter": [{"name":"GIT_COMMIT", "value":"'"$CIRCLE_SHA1"'"}]}')
+
+            # # Check the response code   
+            # if [ "$response" -ne 201 ]; then
+            #   echo "Failed to trigger Jenkins job. HTTP response code: $response"
+            #   exit 1 
+            # else
+            #   echo "Successfully triggered Jenkins job."     
+            # fi  
+
+            # Trigger Jenkins job and capture the HTTP status code and response body
+            response=$(curl -s -o response.txt -w '%{http_code}' -X POST "$JENKINS_URL/job/$JENKINS_JOB/buildWithParameters" \
+              --user "$JENKINS_USER:$JENKINS_API_TOKEN" \
+              --data-urlencode json='{"parameter": [{"name":"GIT_COMMIT", "value":"'"$CIRCLE_SHA1"'"}]}')
+
+            cat response.txt # Print the response body for debugging
+
+            if [ "$response" -ne 201 ]; then
+              echo "Failed to trigger Jenkins job. HTTP status code: $response"
+              exit 1 
+            else
+              echo "Successfully triggered Jenkins job."
+            fi
+
 workflows:
-  build-and-test:
+  version: 2
+  build_and_deploy:
     jobs:
-      - test-python
-    # - deploy:
-    #     requires:
-    #       - test-python
+      - build:
+          filters:
+            branches:
+              only:
+                - 4EdgeIT-NovStaging
+                - development
+                - master
+      - deploy:
+          filters:
+            branches:
+              only:
+                - 4EdgeIT-NovStaging
+                - development
+                - master
+          requires:
+            - build
