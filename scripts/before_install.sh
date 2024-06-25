@@ -7,3 +7,4 @@ cd $WORK_DIR
 # chown -R ubuntu:www-data venv || exit 1
 # chown -R ubuntu:www-data ~/.npm || exit 1
 # chown -R ubuntu:www-data /usr/lib/node_modules || exit 1
+
