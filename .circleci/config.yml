@@ -44,7 +44,7 @@ jobs:
 
             if [[ $CIRCLE_BRANCH == 'production' ]]; then
               JENKINS_USER="jenkins_user"
-              JENKINS_API_TOKEN="114287e118629483a5df7c2447582ccc04"
+              JENKINS_API_TOKEN="1116131762701519f0389800377309cac3"
               JENKINS_URL="http://64.225.86.15:8080/"
               JENKINS_JOB="ilp-production-job"
             else
@@ -58,18 +58,18 @@ jobs:
             echo $JENKINS_URL
             echo $JENKINS_JOB
 
-            # response=$(curl -s -o response.txt -w '%{http_code}' -X POST "$JENKINS_URL/job/$JENKINS_JOB/buildWithParameters" \
-            #   --user "$JENKINS_USER:$JENKINS_API_TOKEN" \
-            #   --data-urlencode json='{"parameter": [{"name":"GIT_COMMIT", "value":"'"$CIRCLE_SHA1"'"}]}')
+            response=$(curl -s -o response.txt -w '%{http_code}' -X POST "$JENKINS_URL/job/$JENKINS_JOB/buildWithParameters" \
+              --user "$JENKINS_USER:$JENKINS_API_TOKEN" \
+              --data-urlencode json='{"parameter": [{"name":"GIT_COMMIT", "value":"'"$CIRCLE_SHA1"'"}]}')
+            echo $CIRCLE_SHA1
+            cat response.txt # Print the response body for debugging
 
-            # cat response.txt # Print the response body for debugging
-
-            # if [ "$response" -ne 201 ]; then
-            #   echo "Failed to trigger Jenkins job. HTTP status code: $response"
-            #   exit 1 
-            # else
-            #   echo "Successfully triggered Jenkins job."
-            # fi
+            if [ "$response" -ne 201 ]; then
+              echo "Failed to trigger Jenkins job. HTTP status code: $response"
+              exit 1 
+            else
+              echo "Successfully triggered Jenkins job."
+            fi
 
 workflows:
   version: 2
