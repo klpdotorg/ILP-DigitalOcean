@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sudo systemctl start ka_gunicorn.service || exit 1
-sudo systemctl start od_gunicorn.service || exit 1
+sudo systemctl start od_gunicorn.service || exit 1 
 # systemctl start jk.service || exit 1
 
 # cd /home/ubuntu/ilp/postman_tests 
