@@ -57,10 +57,10 @@ var topSummaryData = {};
         klp.router.start();
         premodalQueryParams = klp.router.getHash().queryParams;
 
-        $('#startDate').yearMonthSelect("init", {validYears: ['2016', '2017', '2018', '2019', '2020','2021','2022','2023','2024','2025']});
-        $('#endDate').yearMonthSelect("init", {validYears: ['2016', '2017', '2018', '2019', '2020','2021','2022','2023','2024','2025']});
-        $('#startDate').yearMonthSelect("setDate", moment("20190601", "YYYYMMDD"));
-        $('#endDate').yearMonthSelect("setDate", moment("20200331", "YYYYMMDD"));
+        $('#startDate').yearMonthSelect("init", {validYears: ['2022','2023','2024','2025']});
+        $('#endDate').yearMonthSelect("init", {validYears: ['2022','2023','2024','2025']});
+        $('#startDate').yearMonthSelect("setDate", moment("20221101", "YYYYMMDD"));
+        $('#endDate').yearMonthSelect("setDate", moment("20230331", "YYYYMMDD"));
         var startDate = $('#startDate').yearMonthSelect("getFirstDay");
 
         $('#search_button').click(function(e){
@@ -139,8 +139,8 @@ var topSummaryData = {};
     function loadData(params, reloadOpenSection) {
         // As of August 1st, 2017, data from June 2017 is shown as default
         if(!params.from && !params.to) {
-            params.from = '2019-06-01';
-            params.to = '2020-03-31';
+            params.from = '2022-11-01';
+            params.to = '2023-03-31';
         }
 
         klp.GKA.routerParams = params;
