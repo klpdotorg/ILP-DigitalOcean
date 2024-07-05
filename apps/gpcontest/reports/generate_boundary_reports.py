@@ -17,6 +17,7 @@ from django.db.models.functions import Round
 from collections import OrderedDict
 from .utils import convert_to_academicyear
 import locale
+from django.db.models import FloatField, ExpressionWrapper, F
 # This is to add the commas in the right places in the numbers
 # SEtting it to OR because that's installed in almost all our systems
 # If locale is not installed, please install first
@@ -134,7 +135,6 @@ def generate_boundary_report(
             boundary_numschools = boundary_counts.annotate(schools=Sum('num_schools'))[0]
             boundary_numstudents = boundary_counts.annotate(students=Sum('num_students'))[0]
             boundary_numgps = boundary_counts.annotate(gps=Sum('num_gps'))[0]
-            print("boundary counts", boundary_numschools,boundary_numstudents,boundary_numgps)
         except Exception as e:
             print("No boundary counts for boundary id %s in DB" % b.id)
             print(e,"exception")
@@ -178,7 +178,6 @@ def generate_boundary_report(
             competency_scores = get_competency_scores_for_all_qgroups(
                 gp_survey_id, boundary_id, from_yearmonth, to_yearmonth
             )
-            # print("competency scores",competency_scores)
             # Each row is basically a questiongroup or class
             for each_row in boundary_stu_score_groups:
                 boundary_report[each_row["questiongroup_name"]] = {}
@@ -248,8 +247,8 @@ def get_grade_competency_percentages(
             else:
                 percentage = 0
             concept_scores[current_question_key] = percentage
+        print('concept_scores', concept_scores)
     return concept_scores
-
 
 def get_competency_scores_for_all_qgroups(
         gpcontest_survey_id, boundary_id, from_yearmonth, to_yearmonth):
@@ -268,7 +267,12 @@ def get_competency_scores_for_all_qgroups(
             .filter(yearmonth__gte=from_yearmonth)\
             .filter(yearmonth__lte=to_yearmonth)\
             .values('question_key', 'questiongroup_name')\
-            .annotate(correct_answers=RoundWithPlaces(Avg('average'), 2))
+            .annotate(
+                correct_answers=ExpressionWrapper(
+                    RoundWithPlaces(Avg('average'), 2),
+                    output_field=FloatField()
+                )
+            )
     except SurveyBoundaryQuestionGroupQuestionKeyCorrectAnsAgg.DoesNotExist:
         pass
     return correct_answers_agg
